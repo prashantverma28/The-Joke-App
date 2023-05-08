@@ -13,14 +13,17 @@ import kotlinx.coroutines.launch
 
 class JokeViewModel(private val jokeRepository: JokeRepository) : ViewModel() {
 
-    private val _myData = MutableLiveData<ArrayList<Joke>>()
-    val myData: LiveData<ArrayList<Joke>>
-        get() = _myData
+    private val _jokes = MutableLiveData<ArrayList<Joke>>()
+    val jokes: LiveData<ArrayList<Joke>>
+        get() = _jokes
 
     fun loadData() {
         viewModelScope.launch(Dispatchers.IO) {
-            jokeRepository.getJokeList()?.let {
-                _myData.postValue(it)
+            jokeRepository.getLocalJokeList()?.let {
+                _jokes.postValue(it)
+            }
+            jokeRepository.getRemoteJokeList()?.let {
+                _jokes.postValue(it)
             }
             delay(60 * 1000)
             loadData()

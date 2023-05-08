@@ -20,9 +20,7 @@ class EmployeeDiffCallback(
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val (_, jokeName) = oldJokeList[oldItemPosition]
-        val (_, jokeName1) = newJokeList[newItemPosition]
-        return jokeName == jokeName1
+        return oldJokeList[oldItemPosition] == newJokeList[newItemPosition]
     }
 
     override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {

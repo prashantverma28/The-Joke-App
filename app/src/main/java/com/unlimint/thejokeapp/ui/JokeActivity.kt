@@ -26,7 +26,7 @@ class JokeActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@JokeActivity)
             adapter = jokeAdapter
         }
-        jokeViewModel.myData.observe(this) {
+        jokeViewModel.jokes.observe(this) {
             jokeAdapter.updateJokeListItems(it)
             jokeList.scrollToPosition(it.size - 1)
         }

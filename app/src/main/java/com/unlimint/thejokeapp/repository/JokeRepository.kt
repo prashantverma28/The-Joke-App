@@ -5,6 +5,7 @@ import com.unlimint.thejokeapp.database.Joke
 
 interface JokeRepository {
 
-    suspend fun getJokeList(): ArrayList<Joke>?
+    suspend fun getRemoteJokeList(): ArrayList<Joke>?
+    suspend fun getLocalJokeList(): ArrayList<Joke>?
 
 }
